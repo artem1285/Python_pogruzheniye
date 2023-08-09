@@ -54,11 +54,71 @@ print(f'Площадь круга:{s: 42f}')
 # Напишите программу, которая решает квадратные уравнения 
 # даже если дискриминант отрицательный. 
 # Используйте комплексные числа для извлечения квадратного корня. 
-
+num_dec = int(input('введитте число: '))
+res = ''
+DIVIDER = 2
+print (oct(num_dec))
+print (bin(num_dec))
+while num_dec > 0:
+     res = str(num_dec % DIVIDER) + res
+     num_dec //= DIVIDER 
+print(res)
 """
 a, b, c = 3, 4, 5
 d = b ** 2 - 4 * a * c
 print(d)
 # a + b это действительные числа , i это мнимая единица
-"""
+
+
+Задание №6 
+Напишите программу банкомат. 
+✔ Начальная сумма равна нулю 
+✔ Допустимые действия: пополнить, снять, выйти 
+✔ Сумма пополнения и снятия кратны 50 у.е. 
+✔ Процент за снятие — 1.5% от суммы снятия, но не менее 30 и не более 600 у.е. 
+✔ После каждой третей операции пополнения или снятия начисляются проценты - 3% ✔ Нельзя снять больше, чем на счёте 
+✔ При превышении суммы в 5 млн, вычитать налог на богатство 10% перед каждой операцией, даже ошибочной 
+✔ Любое действие выводит сумму денег 
+
+summ = 0
+count_add = 0
+count_out = 0
+while True:
+    print('Ваша сумма', summ)
+    if summ > 5_000_000:
+        print('С вас сняли налог на богатство: ', summ * 0.1)
+        summ -= summ * 0.1
+    action = input('Действиe:')
+    if action == 'q':
+        print('Выходим из банкомата')
+        print('сумма, ', summ)
+        break
+    elif action == 'add':
+        summ_add = int(input('Сумма?:'))
+        if summ_add % 50 == 0:
+            summ += summ_add
+            count_add += 1
+            if count_add % 3 == 0:
+                summ *= 1.03
+        else:
+            print('Введена не правильная сумма (не кратна 50)')
+           
+    elif action == '0':
+        summ_out = int(input('Сумма?:'))
+        comission = summ_out * 0.015
+        if comission < 30:
+            comission = 30
+        elif comission > 600:
+            comission = 600
+            if summ_out + comission > summ:
+                print('Недостаточно средств')
+            else:
+             if summ_out % 50 == 0:
+                summ -= summ_out + comission
+                count_out += 1
+                if count_out % 3 == 0:
+                    summ *= 1.03
+        else:
+         print('Введена не правильная сумма')
+print(f'сумма {summ}')"""
 
