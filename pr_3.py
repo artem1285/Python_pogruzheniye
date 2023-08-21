@@ -9,4 +9,6 @@ for el in lst:
     if el not in new_lst:
         new_lst.append(el)
 print(new_lst)
-print(sorted(new_lst))
+# //Теперь что бы отсортировать по порядку, используем Ф sorted  и туда помещаем новый список
+print(sorted(new_lst))  
+
